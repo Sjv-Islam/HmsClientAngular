@@ -1,0 +1,38 @@
+<a routerLink="/EmergencyCreate/create" class="btn btn-success">Add New Emergency</a>
+
+<hr />
+<div>
+    <h2>Emergency List</h2>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Emergency ID</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Department Name</th>
+                <th>Location</th>
+                <th>DateTime</th>
+                <th>Description</th>
+                <th>Severity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emergency of emergency">
+                <td>{{ emergency.emergencyId }}</td>
+                <td>{{ emergency.patient.name }}</td>
+                <td>{{ emergency.doctor.name }}</td>
+                <td>{{ emergency.department.name }}</td>
+                <td>{{ emergency.location }}</td>
+                <td>{{ emergency.emergencyDateTime | date:'medium' }}</td>
+                <td>{{ emergency.description }}</td>
+                <td>{{ emergency.severity }}</td>
+                <td class="btn-group">
+                    <a [routerLink]="['/EmergencyEdit/edit/', emergency.emergencyId]" class="btn btn-warning">Edit</a>
+                    <button (click)="deleteEmergency(emergency)" class="btn btn-danger">Delete</button>
+                    <a [routerLink]="['/EmergencyPrescribe/entry/', emergency.emergencyId]" class="btn btn-info">Prescribe</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

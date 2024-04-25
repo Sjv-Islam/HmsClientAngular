@@ -1,0 +1,29 @@
+
+<a routerLink="/WardCreate/create" class="btn btn-success">Add New Ward</a>
+<!-- <button class="btn btn-primary" (click)="LoadData()">Refresh</button> -->
+<hr />
+<div>
+    <h2>Ward List</h2>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Ward ID</th>
+                <th>Ward Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ward of model">
+                <td>{{ward.wardId}}</td>
+                <td>{{ward.name}}</td>
+
+                <td class="btn-group">
+
+                    <a [routerLink]="['/WardEdit/edit/', ward.wardId]" class="btn btn-warning">Edit</a>
+                    <a [routerLink]="['/WardDetails/details/', ward.wardId]" class="btn btn-info">Details</a>
+                    <button class="btn btn-danger" (click)="DeleteWard(ward)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,34 @@
+
+
+<a routerLink="/SupplierCreate/create" class="btn btn-success">Add New Suppiler </a>
+<hr />
+<div>
+    <h2>Suppiler List</h2>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact No</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supp of supplier">
+                <td>{{supp.supplierId}}</td>
+                <td>{{supp.name}}</td>
+                <td>{{supp.email}}</td>
+                <td>{{supp.contactNo}}</td>
+                <td>{{supp.address}}</td>
+
+                <td class="btn-group">
+                    <a [routerLink]="['/SupplierEdit/edit/', supp.supplierId]" class="btn btn-warning">Edit</a>
+                    <a [routerLink]="['/SupplierDetails/details/', supp.supplierId]" class="btn btn-info">Details</a>
+                    <button class="btn btn-danger" (click)="DeleteSupplier(supp)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

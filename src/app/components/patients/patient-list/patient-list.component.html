@@ -1,0 +1,44 @@
+<a routerLink="/PatientCreate/create" class="btn btn-success">Add New Patient</a>
+
+<hr />
+<div>
+    <h2>Patient List</h2>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Blood Group</th>
+                <th>ContactNo</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Insurance Information</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients">
+                <td>{{patient.patientId}}</td>
+                <td>{{patient.name}}</td>
+                <td>{{patient.dob}}</td>
+                <td>{{patient.gender}}</td>
+                <td>{{patient.age}}</td>
+                <td>{{patient.bloodType.name}}</td>
+                <td>{{patient.contactNo}}</td>
+                <td>{{patient.email}}</td>
+                <td>{{patient.address}}</td>
+                <td>{{patient.status}}</td>
+                <td>{{patient.insuranceInformation}}</td>
+                <td class="btn-group">
+                    <!-- <a [routerLink]="['/PatientDetails/details/',patient.patientId]" class="btn btn-warning">Details</a> -->
+                    <a [routerLink]="['/PatientEdit/edit/', patient.patientId]" class="btn btn-warning">Edit</a>
+                    <button class="btn btn-danger" (click)="DeletePatient(patient)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

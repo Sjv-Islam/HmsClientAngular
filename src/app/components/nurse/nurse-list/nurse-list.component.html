@@ -1,0 +1,41 @@
+
+<a routerLink="/NurseCreate/create" class="btn btn-success">Add New Nurse</a>
+<hr />
+<div>
+    <h2>Nurse List</h2>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Nurse ID</th>
+                <th>Name</th>
+
+                <th>ContactNo</th>
+                <th>Shift</th>
+                <th>Ward</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let nur of nurse">
+                <td>{{ nur.nurseId }}</td>
+                <td>{{ nur.name }}</td>
+
+                <td>{{ nur.contactNo}}</td>
+
+                <td>{{ nur.shift}}</td>
+                <td>{{ nur.ward.name}}</td>
+                <td>
+                    <figure *ngIf="nur.imagePath">
+                        <img [src]="nur.imagePath" width="180" />
+                    </figure>
+                </td>
+                <td class="btn-group">
+                    <a [routerLink]="['/NurseEdit/edit/', nur.nurseId]" class="btn btn-warning">Edit</a>
+
+                    <button (click)="deleteNurse(nur)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
